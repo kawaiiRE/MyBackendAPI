@@ -6,24 +6,6 @@ using Microsoft.Extensions.Logging;
 [Route("api/[controller]")]
 public class CarsController : ControllerBase
 {
-
-    // private static List<Car> Cars = new List<Car>
-    // {
-    //     new Car { Id = 1, Brand = "Toyot1a", Model = "Corolla1", Year = 2011 },
-    //     new Car { Id = 2, Brand = "Honda2", Model = "Civic2", Year = 2012 }
-    // };
-
-    // [HttpGet]
-    // public IActionResult GetCars() => Ok(Cars);
-
-    // [HttpPost]
-    // public IActionResult AddCar(Car car)
-    // {
-    //     car.Id = Cars.Count + 1;
-    //     Cars.Add(car);
-    //     return CreatedAtAction(nameof(GetCars), new { id = car.Id }, car);
-    // }
-
     private readonly ICarService _carService;
     private readonly ILogger<CarsController> _logger;
 
@@ -36,7 +18,7 @@ public class CarsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Car>>> GetCars()
     {
-        _logger.LogInformation("getting cars");
+        // _logger.LogInformation("getting cars");
 
         var cars = await _carService.GetCarsAsync();
         return Ok(cars);
@@ -45,11 +27,11 @@ public class CarsController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Car>> AddCar([FromBody] Car car)
     {
-        _logger.LogInformation("Adding a new car: {Brand} {Model}, {Year}", car.Brand, car.Model, car.Year); // Log the incoming car details
+        // _logger.LogInformation("new car: {Brand} {Model}, {Year}", car.Brand, car.Model, car.Year);
 
         var addedCar = await _carService.AddCarAsync(car);
 
-        _logger.LogInformation("Car added successfully with ID: {CarId}", addedCar.Id); // Log after the car is added
+        // _logger.LogInformation("id: {CarId}", addedCar.Id);
 
         return CreatedAtAction(nameof(GetCars), new { id = addedCar.Id }, addedCar);
     }
@@ -65,7 +47,7 @@ public class CarsController : ControllerBase
 
         if (updatedCar == null)
         {
-            return NotFound(); 
+            return NotFound();
         }
 
         return Ok(updatedCar);

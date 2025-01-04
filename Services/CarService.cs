@@ -12,11 +12,9 @@ public interface ICarService
 
 public class CarService : ICarService
 {
-    // Declare the list as a static field to persist the data across requests
     private readonly List<Car> _cars;
     private readonly ILogger<CarService> _logger;
 
-    // Constructor: This is called only once, and it will initialize the list only the first time
     public CarService(ILogger<CarService> logger)
     {
         _logger = logger;
@@ -30,7 +28,7 @@ public class CarService : ICarService
                 new Car { Id = 2, Brand = "Honda", Model = "Civic", Year = 2021, Hidden=false  },
                 new Car { Id = 3, Brand = "Ford", Model = "Mustang", Year = 2022, Hidden=false  }
             };
-            _logger.LogInformation("Car list initialized with predefined cars.");
+            // _logger.LogInformation("init cars list");
         }
     }
 
@@ -48,12 +46,10 @@ public class CarService : ICarService
         // Assign a new ID based on the current count
         car.Id = _cars.Count + 1;
         _cars.Add(car);
-
-        // Log all cars after adding the new car
-        _logger.LogInformation("All cars after adding new car:");
+        // _logger.LogInformation("all cars");
         foreach (var c in _cars)
         {
-            _logger.LogInformation("Car ID: {Id}, Brand: {Brand}, Model: {Model}, Year: {Year}", c.Id, c.Brand, c.Model, c.Year);
+            // _logger.LogInformation("Car ID: {Id}, Brand: {Brand}, Model: {Model}, Year: {Year}", c.Id, c.Brand, c.Model, c.Year);
         }
 
         return Task.FromResult(car);
@@ -62,23 +58,20 @@ public class CarService : ICarService
     // edit car
     public Task<Car> UpdateCarAsync(int id, Car updatedCar)
     {
-        // Find the car by ID
         var existingCar = _cars.FirstOrDefault(c => c.Id == id);
 
         if (existingCar == null)
         {
-            return Task.FromResult<Car>(null);  // If car not found, return null
+            return Task.FromResult<Car>(null); 
         }
 
-        // Update the car details
         existingCar.Brand = updatedCar.Brand;
         existingCar.Model = updatedCar.Model;
         existingCar.Year = updatedCar.Year;
         existingCar.Hidden = updatedCar.Hidden;
 
-        // Log the update
-        _logger.LogInformation("Updated car with ID: {Id}, Brand: {Brand}, Model: {Model}, Year: {Year}",
-            existingCar.Id, existingCar.Brand, existingCar.Model, existingCar.Year);
+        // _logger.LogInformation("{Id}, Brand: {Brand}, Model: {Model}, Year: {Year}",
+        //     existingCar.Id, existingCar.Brand, existingCar.Model, existingCar.Year);
 
         return Task.FromResult(existingCar);
     }
