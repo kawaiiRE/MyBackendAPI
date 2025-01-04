@@ -31,3 +31,6 @@ C:\Users\User\OneDrive\Documents\~~Rach\KA\MyBackendAPI\obj\Debug\net9.0\MyBacke
 C:\Users\User\OneDrive\Documents\~~Rach\KA\MyBackendAPI\obj\Debug\net9.0\MyBackendAPI.genruntimeconfig.cache
 C:\Users\User\OneDrive\Documents\~~Rach\KA\MyBackendAPI\obj\Debug\net9.0\ref\MyBackendAPI.dll
 C:\Users\User\OneDrive\Documents\~~Rach\KA\MyBackendAPI\obj\Debug\net9.0\scopedcss\bundle\MyBackendAPI.styles.css
+C:\Users\User\OneDrive\Documents\~~Rach\KA\MyBackendAPI\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\User\OneDrive\Documents\~~Rach\KA\MyBackendAPI\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\User\OneDrive\Documents\~~Rach\KA\MyBackendAPI\obj\Debug\net9.0\MyBackendAPI.sourcelink.json
